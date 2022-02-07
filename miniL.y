@@ -13,7 +13,7 @@ void yyerror(const char *msg);
 
 %error-verbose
 %locations
-%start Program
+%start Program_Start
 
 %token FUNCTION
 %token BEGIN_PARAMS
@@ -69,8 +69,8 @@ void yyerror(const char *msg);
 
 /* %write your rules here */
 
-Program: Functions {
-  printf("Program -> Functions\n");
+Program_Start: Functions {
+  printf("Program_Start -> Functions\n");
 };
   
 Functions: %empty {
@@ -80,8 +80,8 @@ Functions: %empty {
     printf("Function -> Function Functions\n");
   };
 
-Function: FUNCTION IDENT SEMICOLON BEGIN_PARAMS Declarations END_PARAMS BEGIN_LOCALS Declarations SEMICOLON END_LOCALS BEGIN_BODY Statements END_BODY {
-  printf("Function -> FUNCTION IDENT SEMICOLON BEGINPARAMS Declarations END_PARAMS BEGIN_LOCALS Declarations SEMICOLON END_LOCALS BEGIN_BODY Statements END_BODY\n");
+Function: FUNCTION IDENT SEMICOLON BEGIN_PARAMS Declarations END_PARAMS BEGIN_LOCALS Declarations END_LOCALS BEGIN_BODY Statements END_BODY {
+  printf("Function -> FUNCTION IDENT SEMICOLON BEGINPARAMS Declarations END_PARAMS BEGIN_LOCALS Declarations END_LOCALS BEGIN_BODY Statements END_BODY\n");
 };
 
 Declarations: %empty {
